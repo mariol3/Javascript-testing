@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Recursion with anonymous function 2</title>
+      <script type="text/javascript" src="../../debugging/testing/assert.js"></script>
+      <script type="text/javascript" src="../../debugging/logging/crossbrowser-log.js"></script>
+      <link rel="stylesheet" type="text/css" href="../../debugging/testing/assert.css" />
+   </head>
+   <body>
+      <ul id="results"></ul>
+      <script type="text/javascript">
+         
+         var obj = {
+            yell: function (n) {                                 // Recursive anonymous function using object property - NOT OPTIMAL WAY
+               return n > 0 ? obj.yell(n-1) + "a" : "Hiy";
+            }
+         }
+         
+         var anotherObj = {                                      // anotherObj.yell reference to obj.yell
+            yell: obj.yell
+         };
+         
+         obj = {};                                               // obj new value is empty object {}
+         
+         try {
+            assert(anotherObj.yell(4) == "hiyaaaa",                  // Here we call anotherObj.yell = obj.yell that still exist but internally
+               "Works? I don't think so...");                        // this function is referencing obj.yell! But obj it's empty now!
+         } catch(e) {                                                // (See n° 3 for solution) 
+            console.log("If you see this, things didn't go well :P");
+         }
+         
+      
+      </script>
+   </body>
+</html>

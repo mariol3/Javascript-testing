@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Anonymous inline functions</title>
+      <script type="text/javascript" src="../../debugging/testing/assert.js"></script>
+      <script type="text/javascript" src="../../debugging/logging/crossbrowser-log.js"></script>
+      <link rel="stylesheet" type="text/css" href="../../debugging/testing/assert.css" />
+   </head>
+   <body>
+      <ul id="results"></ul>
+      <script type="text/javascript">
+         
+         var obj = {
+            yell: function shout(n) {
+               return n > 0 ? shout(n-1) + "a" : "Hiy";
+            }
+         };
+         
+         var anotherObj = {
+            yell: obj.yell
+         };
+         
+         obj = {};
+                  
+         assert(anotherObj.yell(4) == "hiyaaaa",
+            "The function is still valid because shout name is still defined!");
+          
+         assert(typeof shout == "undefined",
+            "But shout function can't be accessed from outside!");
+      
+      </script>
+   </body>
+</html>

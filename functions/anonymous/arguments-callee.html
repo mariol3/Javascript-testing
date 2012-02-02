@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>arguments.callee property</title>
+      <script type="text/javascript" src="../../debugging/testing/assert.js"></script>
+      <script type="text/javascript" src="../../debugging/logging/crossbrowser-log.js"></script>
+      <link rel="stylesheet" type="text/css" href="../../debugging/testing/assert.css" />
+   </head>
+   <body>
+      <ul id="results"></ul>
+      <script type="text/javascript">
+         
+         var obj = {
+            yell: function yell(n) {                                 
+               return n > 0 ? arguments.callee(n-1) + "a" : "Hiy";   // arguments.callee can be used to reference the function itself
+            }
+         };
+         
+         assert(obj.yell(4) == "hiyaaaa",
+            "arguments.callee works!");
+      
+      </script>
+   </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Anonymous Function Example</title>
+      <script type="text/javascript" src="../../debugging/testing/assert.js"></script>
+      <script type="text/javascript" src="../../debugging/logging/crossbrowser-log.js"></script>
+      <link rel="stylesheet" type="text/css" href="../../debugging/testing/assert.css" />
+   </head>
+   <body>
+      <script type="text/javascript">
+         
+         var obj = {
+            someMethod: function() {      // Anonymous function used to define an object property
+               log("Let's count!");
+            }
+         }
+         obj.someMethod();
+         
+         var seconds = 1;                 // Anonymous function used to define a function to be called from setInterval
+         setInterval(function() {
+            log(seconds + " seconds!");
+            seconds++;
+            }, 1000);
+      
+      </script>
+   </body>
+</html>
