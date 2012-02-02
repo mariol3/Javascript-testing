@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Declaring Functions</title>
+		<script type="text/javascript">
+		
+			function namedFunc() { return true; };						// A named function
+			var varFunc = function() { return true; }; 				// An anonymous function, assigned to a variable
+			window.memberFunc = function () { return true; };		// An anonymous function, assigned as a window object member
+		
+			/*
+			 * All functions can be accessed as a window member (Global Scope)
+			 * Note: scope.func doesn't call the function, just access to func value.
+			 *			scope.func() call the function
+			 */
+			console.log(window.namedFunc);
+			console.log(window.varFunc);
+			console.log(window.memberFunc);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

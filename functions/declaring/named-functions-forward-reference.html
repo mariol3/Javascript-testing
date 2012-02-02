@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Named Functions Forward Reference</title>
+		<script type="text/javascript" src="../../debugging/testing/assert.js"></script>
+		<link rel="stylesheet" type="text/css" href="../../debugging/testing/assert.css" />
+	</head>
+	<body>
+	
+		<ul id="results"></ul>
+		
+		<script type="text/javascript">
+		
+			var varFunc = function() { return true; };			// var function
+			window.memberFunc = function() { return true; };	// member function
+			
+			assert(varFunc() && memberFunc() && namedFunc(),	
+				"Works! Because named functions can be forward referenced!");	// this assert call namedFunc() even if it wasn't declared before.
+			
+			function namedFunc() { return true; };					// named function
+		
+		</script>
+	</body>
+</html>
