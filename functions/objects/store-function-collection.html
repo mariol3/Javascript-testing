@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Function Collection</title>
+      <script type="text/javascript" src="../../debugging/testing/assert.js"></script>
+      <script type="text/javascript" src="../../debugging/logging/crossbrowser-log.js"></script>
+      <link rel="stylesheet" type="text/css" href="../../debugging/testing/assert.css" />
+   </head>
+   <body>
+      <ul id="results"></ul>
+      <script type="text/javascript">
+         /*
+          * This is an example of how to use function properties.
+          * In this case we use a property to store a collection
+          * of functions without duplicates.
+          */
+          
+          var store = {
+            nextId: 1,
+            cache: {},
+            add: function(fn) {
+               if(!fn.id) {
+                  fn.id = this.nextId++;
+                  return !!(this.cache[fn.id] = fn);              // !! operator traduces it's argument into a boolean equivalent, examples:
+               }                                                  // !!(0) = false
+            }                                                     // !!("hello!") = true
+          };
+         
+         function func() {};
+         
+         assert(store.add(func),
+            "The function is added!");
+         assert(!store.add(func),
+            "But if we try to add the same function a second time, we can't!");         
+         
+         
+      </script>
+   </body>
+</html>
