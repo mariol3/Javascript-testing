@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Context out of Objects</title>
+      <script type="text/javascript" src="../../debugging/testing/assert.js"></script>
+      <script type="text/javascript" src="../../debugging/logging/crossbrowser-log.js"></script>
+      <link rel="stylesheet" type="text/css" href="../../debugging/testing/assert.css" />
+   </head>
+   <body>
+      <ul id="results"></ul>
+      <script type="text/javascript">
+         
+         /* Here we define a named func. What this reference? */
+         function aFunc() {
+            this.aField = true;
+         }
+         
+         aFunc();
+         
+         /* 
+          * Here we find that aField is global. That's because in aFunc function, this = window!
+          * So we've created a this.aField = window.aField property, a global property!
+          */
+         assert(aField === true,
+            "aField has become a global variable because it's now a property of the window object!");
+         
+      </script>
+   </body>
+</html>
