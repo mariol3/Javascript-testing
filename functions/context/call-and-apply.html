@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Call & Apply methods</title>
+      <script type="text/javascript" src="../../debugging/testing/assert.js"></script>
+      <script type="text/javascript" src="../../debugging/logging/crossbrowser-log.js"></script>
+      <link rel="stylesheet" type="text/css" href="../../debugging/testing/assert.css" />
+   </head>
+   <body>
+      <ul id="results"></ul>
+      <script type="text/javascript">
+         
+         /*
+          * Example of use of the call and apply methods.
+          * call(context, arg1, arg2, ..., argn)
+          * apply(context, arguments[])
+          */
+          
+         function add(a, b) {
+           return a + b;
+         }
+         
+         assert(add.call(this, 1, 2) == 3,
+            "The call methods pass single arguments.");
+         assert(add.apply(this, [1, 2]) == 3,
+            "The apply methods pass an array of arguments.");
+            
+      </script>
+   </body>
+</html>
