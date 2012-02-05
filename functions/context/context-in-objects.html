@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Function as object</title>
+      <script type="text/javascript" src="../../debugging/testing/assert.js"></script>
+      <script type="text/javascript" src="../../debugging/logging/crossbrowser-log.js"></script>
+      <link rel="stylesheet" type="text/css" href="../../debugging/testing/assert.css" />
+   </head>
+   <body>
+      <ul id="results"></ul>
+      <script type="text/javascript">
+         
+         var obj = {
+            aField: true,
+            aFunc: function() {
+               this.aField = !this.aField;
+            }
+         };
+         
+         assert(obj.aField,
+            "Now the field value is true.");
+         
+         obj.aFunc();                              // When you call a method inside an object, the context this is referencing
+                                                   // the object itself. In this case this = obj
+         assert(!obj.aField,
+            "Now the field value is false");
+         
+      </script>
+   </body>
+</html>
