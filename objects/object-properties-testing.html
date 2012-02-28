@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Object Properties Testing</title>
+      <script type="text/javascript" src="../my-utils/js/my-utils.js"></script>
+      <link rel="stylesheet" type="text/css" href="../my-utils/css/my-utils.css" />
+   </head>
+   <body>
+      <div id="results"></div>
+      <script type="text/javascript">
+         /* Declare an object o */
+         var o = { x: 1 };
+         
+         /* Declare an object o2 that inherits prototype from o */
+         var o2 = inherit(o);
+         
+         /* Define an o2 specific property */
+         o2.y = 2;
+         
+         /* 
+          * First testing method: "in" operator.
+          * Return true if property is present into object
+          * or in its prototype
+          */
+         assert("y" in o2,
+            "Returns true because y is an o2 property.");
+         assert("x" in o2,
+            "Returns true because x is in o2 prototype.");
+         assert("z" in o2,
+            "Returns false because z doesn't exists");
+            
+        /*
+         * Second testing method: "hasOwnProperty()" function.
+         * Return true only if property is present in object
+         */
+         assert(o2.hasOwnProperty("y"),
+            "Returns true because y is an o2 property.");
+         assert(o2.hasOwnProperty("x"),
+            "Returns false because x is in o2 prototype.");
+         assert(o2.hasOwnProperty("z"),
+            "Returns false because z doesn't exists");
+            
+        /*
+         * Third testing method: "propertyIsEnumerable()" function.
+         * Return true only if property is present in object and is Enumerable
+         */
+         assert(o2.propertyIsEnumerable("y"),
+            "Returns true because y is an o2 property and is enumerable.");
+         assert(o2.propertyIsEnumerable("x"),
+            "Returns false because x is in o2 prototype.");
+         assert(o2.propertyIsEnumerable("z"),
+            "Returns false because z doesn't exists");
+         assert(Object.prototype.propertyIsEnumerable("toString"),
+            "Returns false because 'toString' is not enumerable");
+      </script>
+   </body>
+</html>
