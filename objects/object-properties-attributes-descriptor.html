@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Title</title>
+      <script type="text/javascript" src="../my-utils/js/my-utils.js"></script>
+      <link rel="stylesheet" type="text/css" href="../my-utils/css/my-utils.css" />
+   </head>
+   <body>
+      <script type="text/javascript">
+         /* 
+          * In ECMAScript 5 every object property has 4 attributes:
+          * - value: contains the property value
+          * - writeable: boolean flag, indicates if property value can be changed
+          * - enumerable: boolean flag, indicates if property can be returned in a for/in loop
+          * - configurable: boolean flag, indicates if property can be deleted and if attributes values can be modified
+          *
+          * This 4 attributes are rappresented into a PropertyDescriptor object as properties. To get this it's
+          * possible to use the "getOwnPropertyDescriptor()" of Object. Example:
+          */
+          
+          var o = {
+            x: 1
+          };
+          
+          /* 
+           * Get x property descriptor. Default attributes values are:
+           * - value = value setted into object (in this case "1")
+           * - writeable = true
+           * - enumerable = true
+           * - configurable = true
+           */
+          var xDescriptor = Object.getOwnPropertyDescriptor(o, "x");
+          console.log(xDescriptor);
+          
+          /*
+           * For accessor properties there are 2 differents value:
+           * - value = get function
+           * - writeable = set function
+           *
+           * Enumerable e configurable act as usually.
+           */
+           var accessorObject = {
+            get x(){},
+            set x(v){}
+           };
+           
+           var accessorDescriptor = Object.getOwnPropertyDescriptor(accessorObject, "x");
+           console.log(accessorDescriptor);
+      </script>
+   </body>
+</html>
